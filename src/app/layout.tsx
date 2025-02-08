@@ -1,4 +1,7 @@
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { Metadata } from 'next';
+import theme from '@/theme';
+import { ThemeProvider } from '@mui/material';
 
 export const metadata: Metadata = {
   title: 'Next.js on GitHub Pages',
@@ -12,7 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>
+            {children}
+          </ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
